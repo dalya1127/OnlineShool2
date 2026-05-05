@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShool.Infrastructura.Instructions;
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using static System.Net.Mime.MediaTypeNames;
+
+
+
+
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {
@@ -19,8 +22,9 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             var _context = _factory.CreateDbContext();
             PurchasedCourse newPurchasedCourse = new PurchasedCourse()
             {
-                Id = IdUser,
-                IdCourses = IdCourse,        
+                
+                IdCourses = IdCourse,
+                IdUser = IdUser
             };
             await _context.PurchasedCourses.AddAsync(newPurchasedCourse);
             await _context.SaveChangesAsync();
@@ -35,6 +39,15 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             _context.Remove(removePurchased);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<PurchasedCourse>> GetAllAsync()
+        {
+            var _context = _factory.CreateDbContext();
+            var result = await _context.PurchasedCourses.ToListAsync();
+            return result;
+        }
+
+
 
         public async Task<List<PurchasedCourse>> GetPurchasedCourseByUser(int id)
         {

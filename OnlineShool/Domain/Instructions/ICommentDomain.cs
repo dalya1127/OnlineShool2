@@ -1,5 +1,6 @@
 ﻿
-using OnlineShool.Infrastructura.Sql_Server.Models;
+
+
 
 namespace OnlineShool.Domain;
 public interface ICommentDomain
@@ -11,7 +12,7 @@ public interface ICommentDomain
     /// <param name="ct">Токен Отмены</param>
     /// <returns>Возращается объект <see cref="CommentDomain"/></returns>
     /// <exception>Такого идентификатора не существует</exception>
-    Task<CommentDomain?> GetByIdAsync(int id, CancellationToken ct);
+    Task<CommentDomain?> GetByIdAsync(int id);
     Task<IReadOnlyList<CommentDomain>> GetAllAsync();
     Task<IReadOnlyList<CommentDomain>> GetByLessonIdAsync(int lessonId);
     Task<IReadOnlyList<CommentDomain>> GetByUserIdAsync(int userId);

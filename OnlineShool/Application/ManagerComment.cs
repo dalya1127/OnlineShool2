@@ -57,9 +57,9 @@ namespace OnlineShool.Application
             
         }
 
-        public async Task<CommentDomain?> GetByIdAsync(int id, CancellationToken ct)
+        public async Task<CommentDomain?> GetByIdAsync(int id)
         {
-            var comment = await _commentRepository.GetByIdAsync(id, ct);
+            var comment = await _commentRepository.GetByIdAsync(id);
 
             return comment == null ? null : ConvertToDomain(comment);
         }

@@ -46,7 +46,7 @@ namespace OnlineShool.Presentation.API
         [HttpGet("GetByHomework")]
         public async Task<IActionResult> GetLinksLessonsHomeWorkByHomeWork(int IdHomework)
         {
-            var newLink = await _linkLessonHw.GetLinksLessonsHomeWorkByLesson(IdHomework);
+            var newLink = await _linkLessonHw.GetLinksLessonsHomeWorkByHomeWork(IdHomework);
             return Ok(newLink);
         }
 

@@ -18,7 +18,7 @@ public interface ICourseDomain
         string? LinkPic = null
         );
 
-
+    Task<List<PurchasedCourseDomain>> GetAllAsync();
     Task<List<PurchasedCourseDomain>> GetPurchasedCourseByUser(int id);
     Task<PurchasedCourseDomain> CreatePurchasedCourseAsync(
         int IdUser,

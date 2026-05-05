@@ -60,7 +60,7 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
         public async Task<IReadOnlyList<User>> GetAllAsync()
         {
             var _context = _factory.CreateDbContext();
-            var result = await _context.Users.ToListAsync();
+            var result = await _context.Users.Include( x=> x.IdRoleNavigation).ToListAsync();
             return result;
         }
 

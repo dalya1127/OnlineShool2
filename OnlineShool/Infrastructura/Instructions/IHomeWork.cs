@@ -5,7 +5,7 @@ namespace OnlineShool.Infrastructura.Instructions
     public interface IHomeWork 
     {
         Task<IReadOnlyList<HomeWork>> GetAllAsync();
-
+        Task<HomeWork> GetByIdAsync(int id);
         Task<HomeWork> CreateAsync(
             string Name,
             string? Description,

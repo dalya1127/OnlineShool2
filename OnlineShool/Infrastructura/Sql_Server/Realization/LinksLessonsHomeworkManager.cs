@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+
 using OnlineShool.Infrastructura.Instructions;
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using System.Net.WebSockets;
+
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {

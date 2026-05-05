@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShool.Infrastructura.Instructions;
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using static System.Net.Mime.MediaTypeNames;
+
+
+
+
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {
@@ -42,6 +45,21 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<Video>> GetAll()
+        {
+            var _context = _factory.CreateDbContext();
+            var getAll = await _context.Videos.ToListAsync();
+            return getAll;
+
+        }
+
+        public async Task<Video> GetById(int id)
+        {
+            var _context = _factory.CreateDbContext();
+            var getAll = await _context.Videos.FindAsync(id);
+            return getAll;
+        }
+
         public async Task<List<Video>> GetVideosByCourse(int id)
         {
             var _context = _factory.CreateDbContext();
@@ -68,6 +86,9 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
                 .ToListAsync();
             return result;
         }
+
+        
+
 
         public async Task<Video> UpdateVideoAsync(int id,string? Name = null, string? LinkFile = null, string? Description = null)
         {

@@ -133,6 +133,16 @@ namespace OnlineShool.Application
             return ConvertVideoToDomain(links);
         }
 
+        public async Task<List<VideoDomain>> GetAll()
+        {
+            var getAll = await _videoRepository.GetAll();
+            return ConvertVideoToList(getAll);
+        }
 
+        public async Task<VideoDomain> GetById(int id)
+        {
+            var getById = await _videoRepository.GetById(id);
+            return ConvertVideoToDomain(getById);
+        }
     }
 }

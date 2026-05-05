@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.AspNetCore.Rewrite;
+
 using OnlineShool.Domain;
-using OnlineShool.Infrastructura.Instructions;
-using OnlineShool.Infrastructura.Sql_Server.Models;
+
+
 
 namespace OnlineShool.Application
 {
@@ -65,8 +65,9 @@ namespace OnlineShool.Application
                 userDomain.Email = user.Email;
                 userDomain.Login = user.Login;
                 userDomain.Role = user.IdRoleNavigation.Name;
-
+                resultUsers.Add(userDomain);
             }
+
             return resultUsers;
         }
 

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Domain;
-using OnlineShool.Infrastructura.Instructions;
-using OnlineShool.Infrastructura.Sql_Server.Models;
+
 using OnlineShool.Presentation.API.DTOS.ImplementingHw;
-using System.Reflection.Metadata.Ecma335;
+
 
 
 namespace OnlineShool.Presentation.API

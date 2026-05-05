@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShool.Infrastructura.Sql_Server.Models;
 
+
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {
     public class LessonManager : ILessonRepository

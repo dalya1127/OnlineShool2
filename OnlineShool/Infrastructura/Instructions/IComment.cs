@@ -1,7 +1,7 @@
 ﻿using OnlineShool.Infrastructura.Sql_Server.Models;
 public interface IComment
 {
-    Task<Comment?> GetByIdAsync(int id, CancellationToken ct);
+    Task<Comment?> GetByIdAsync(int id);
     Task<IReadOnlyList<Comment>> GetAllCommentAsync();
     Task<IReadOnlyList<Comment>> GetByLessonIdAsync(int lessonId);
     Task<IReadOnlyList<Comment>> GetByUserIdAsync(int userId);

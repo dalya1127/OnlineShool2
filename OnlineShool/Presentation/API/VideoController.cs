@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShool.Infrastructura.Instructions;
+
 using OnlineShool.Domain;
 
 
@@ -28,6 +28,21 @@ namespace OnlineShool.Presentation.API
             var updateVideo = await _videoDomain.UpdateVideoAsync(videoUpdateDTO.id, videoUpdateDTO.Name, videoUpdateDTO.LinkFile, videoUpdateDTO.Description);
                 return Ok(updateVideo);
         }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var getById = await _videoDomain.GetById(id);
+            return Ok(getById);
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getById = await _videoDomain.GetAll();
+            return Ok(getById);
+        }
+
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] int id)

@@ -1,8 +1,11 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
+
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using System.Runtime.InteropServices;
+
+
+
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {
@@ -57,11 +60,11 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             return result;
         }
 
-        public async Task<Comment?> GetByIdAsync(int id, CancellationToken ct)
+        public async Task<Comment?> GetByIdAsync(int id)
         {
             var _context = _factory.CreateDbContext();
             var result = await _context.Comments
-                .FindAsync(id, ct);
+                .FindAsync(id);
             return result;
         }
 

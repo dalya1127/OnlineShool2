@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Presentation.API.DTOS.Role;
-using OnlineShool.Domain;
+
+
+
+
+
 
 
 namespace OnlineShool.Presentation.API
@@ -28,6 +32,22 @@ namespace OnlineShool.Presentation.API
             await _roleDomain.UpdateRolesAsync(roleDTO.Id, roleDTO.Name, roleDTO.Description);
             return Ok();
         }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var roles = await _roleDomain.GetAllAsync();
+            return Ok(roles);
+        }
+
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery]int id)
+        {
+            var roles = await _roleDomain.GetRolesById(id);
+            return Ok(roles);
+        }
+
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] int id)

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Domain;
-using OnlineShool.Infrastructura.Instructions;
+
+
+
 
 using OnlineShool.Presentation.API.DTOS.PurchasedCourse;
 
@@ -23,6 +25,16 @@ namespace OnlineShool.Presentation.API
             var newPurchasedCourse = await _purchasedCourseDomain.CreatePurchasedCourseAsync(courseDTO.IdUser, courseDTO.IdCourses);
             return Ok(newPurchasedCourse);
         }
+
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAll = await _purchasedCourseDomain.GetAllAsync();
+            return Ok(getAll);
+        }
+
+        
 
         [HttpPut]
         public async Task<IActionResult> Update

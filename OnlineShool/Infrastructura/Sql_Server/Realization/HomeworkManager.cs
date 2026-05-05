@@ -50,6 +50,13 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             return result;
         }
 
+        public async Task<HomeWork> GetByIdAsync(int id)
+        {
+            var _context = _factory.CreateDbContext();
+            var result = await _context.HomeWorks.FindAsync(id);
+            return result;
+        }
+
 
         public async Task<HomeWork> UpdateAsync(int Id ,string? LinkFile = null, string? Name=null, string? Description = null)
         {

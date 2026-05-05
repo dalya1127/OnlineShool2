@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization
 {

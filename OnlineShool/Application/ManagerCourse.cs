@@ -107,5 +107,11 @@ namespace OnlineShool.Application
             var newPurchCourse = await _purchasedCourse.UpdatePurchasedAsync(id,IdUser, IdCourse);
             return ConvertPurchasedCourseToDomain(newPurchCourse);
         }
+
+        public async Task<List<PurchasedCourseDomain>> GetAllAsync()
+        {
+            var getAll = await _purchasedCourse.GetAllAsync();
+            return ConvertPurchasedCourseToList(getAll);
+        }
     }
 }

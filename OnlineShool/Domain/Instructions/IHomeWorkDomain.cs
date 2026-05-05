@@ -5,7 +5,7 @@
         Task<IReadOnlyList<HomeWorkDomain>> GetAllAsync();
         Task<List<HomeWorkDomain>> GetHomeWorkByLessonsAsync(int id);
         Task<List<HomeWorkDomain>> GetHomeWorkByCourseAsync(int id);
-
+        Task<HomeWorkDomain> GetByIdAsync(int id);
 
         Task<List<StatusHomeWorkDomain>> GetStatusHomeWorkByUser(int IdUser);
         Task<List<StatusHomeWorkDomain>> GetStatusHomeWorkByHomeWork(int id);

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Validation;
+
 using OnlineShool.Infrastructura.Sql_Server.Models;
 
 namespace OnlineShool.Infrastructura.Sql_Server.Realization

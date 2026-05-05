@@ -1,7 +1,7 @@
 ﻿using OnlineShool.Domain;
 using OnlineShool.Infrastructura.Instructions;
 using OnlineShool.Infrastructura.Sql_Server.Models;
-using System.Runtime.CompilerServices;
+
 
 namespace OnlineShool.Application
 {

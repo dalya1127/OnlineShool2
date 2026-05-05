@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Domain;
 using OnlineShool.Presentation.API.DTOS.Course;
-using System.Runtime.InteropServices;
+
+
+
 
 namespace OnlineShool.Presentation.API
 {
@@ -34,6 +36,14 @@ namespace OnlineShool.Presentation.API
                                                                courseDTO.Description);
             return Ok(updateCourse);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var courses = await _courseDomain.GetAllCourseAsync();
+            return Ok(courses);
+        }
+
+        
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] int id)
         {

@@ -7,6 +7,9 @@ namespace OnlineShool.Domain
         Task<List<VideoDomain>> GetVideosByLessons(int id);
         Task<List<VideoDomain>> GetVideosByCourse(int id);
 
+        Task<List<VideoDomain>> GetAll();
+        Task<VideoDomain> GetById(int id);
+
         Task<VideoDomain> CreateVideoAsync(
             string Name,
             string? LinkFile = null,

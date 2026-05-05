@@ -37,6 +37,24 @@ namespace OnlineShool.Presentation.API
             return Ok(updateComment);
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll
+            (
+            )
+        {
+            var getComment = await _commentDomain.GetAllAsync();
+            return Ok(getComment);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById
+            (
+            [FromQuery] int id
+            )
+        {
+            var getComment = await _commentDomain.GetByIdAsync(id);
+            return Ok(getComment);
+        }
 
         [HttpDelete]
         public async Task<IActionResult> Delete

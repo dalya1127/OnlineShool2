@@ -7,6 +7,9 @@ namespace OnlineShool.Infrastructura.Instructions
         Task<List<Video>> GetVideosByLessons(int id);
         Task<List<Video>> GetVideosByCourse(int id);
 
+        Task<Video> GetById(int id);
+        Task<List<Video>> GetAll();
+
         Task<Video> CreateVideoAsync(
             string Name,
             string? LinkFile = null,

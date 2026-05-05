@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Domain;
 using OnlineShool.Presentation.API.DTOS.Lesson;
-using OnlineShool.Infrastructura.Instructions;
+
 
 
 
@@ -29,6 +29,27 @@ namespace OnlineShool.Presentation.API
         {
             var updateLesson = await _lessonDomain.UpdateLessonAsync(lessonDTO.Id, lessonDTO.IdCourses,lessonDTO.Name,lessonDTO.NumberLessons, lessonDTO.LinkFile, lessonDTO.LinkPic, lessonDTO.Description);      
             return Ok(updateLesson);
+        }
+
+        [HttpGet("GetByCourse")]
+        public async Task<IActionResult> GetByCourse([FromQuery] int courseId)
+        {
+            var getByCourse = await _lessonDomain.GetByCourseIdAsync(courseId);
+            return Ok(getByCourse);
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAll = await _lessonDomain.GetAllAsync();
+            return Ok(getAll);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery]int id)
+        {
+            var getById = await _lessonDomain.GetByIdAsync(id);
+            return Ok(getById);
         }
 
         [HttpDelete]

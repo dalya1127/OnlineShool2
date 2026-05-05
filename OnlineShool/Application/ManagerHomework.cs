@@ -1,7 +1,8 @@
 ﻿using OnlineShool.Domain;
 using OnlineShool.Infrastructura.Instructions;
-using OnlineShool.Infrastructura.Sql_Server;
+
 using OnlineShool.Infrastructura.Sql_Server.Models;
+
 
 namespace OnlineShool.Application
 {
@@ -222,6 +223,12 @@ namespace OnlineShool.Application
         Task<HomeWorkDomain> IHomeWorkDomain.UpdateStatusHomeworkAsync(int id, string? Name, string? Description)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<HomeWorkDomain> GetByIdAsync(int id)
+        {
+            var getHw = await _homeworkRepository.GetByIdAsync(id);
+            return ConvertHomeWorkToDomain(getHw);
         }
     }
 }

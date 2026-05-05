@@ -67,6 +67,20 @@ namespace OnlineShool.Presentation.API
             
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAll = await _userDomain.GetAllAsync();
+            return Ok(getAll);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var getById = await _userDomain.GetByIdAsync(id);
+            return Ok(getById);
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete
         (

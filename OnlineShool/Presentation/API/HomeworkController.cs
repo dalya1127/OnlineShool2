@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShool.Infrastructura.Instructions;
+
 using OnlineShool.Domain;
 using OnlineShool.Presentation.API.DTOS.Homework;
 
@@ -29,6 +29,22 @@ namespace OnlineShool.Presentation.API
             var updateHw = await _homeWorkDomain.UpdateHomeworkAsync(hwDTO.Id, hwDTO.Name, hwDTO.LinkFile, hwDTO.Description);
             return Ok(updateHw);
         }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery]int id)
+        {
+            var getHw = await _homeWorkDomain.GetByIdAsync(id);
+            return Ok(getHw);
+        }
+
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getHw = await _homeWorkDomain.GetAllAsync();
+            return Ok(getHw);
+        }
+
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] int id)
