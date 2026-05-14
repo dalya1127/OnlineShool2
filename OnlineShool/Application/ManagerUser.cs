@@ -9,10 +9,12 @@ namespace OnlineShool.Application
     public class ManagerUser: IUserDomain
 
     {
+        IRoleRepository _roleRepository;
         IUserRepository _userRepository;
-        public ManagerUser(IUserRepository userRepository)
+        public ManagerUser(IUserRepository userRepository, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
 
         public async Task<UserDomain> AuthorizationUserAsync(string Login, string Pasword)
@@ -32,7 +34,15 @@ namespace OnlineShool.Application
 
         public async Task<UserDomain> CreateUserAsync(string FirstName, string LastName, int IdRole, string Login, string Email, string Password, string Patronymic = null)
         {
+            var isExist = await _roleRepository.GetRolesById(IdRole);
+
+            if (isExist == null)
+            {
+                throw new Exception("Не получилось найти идентификатор роли");
+            }
+
             var newUser = await _userRepository.CreateUserAsync(FirstName, LastName, IdRole, Login, Email, Password, Patronymic);
+
 
             return new UserDomain()
             {

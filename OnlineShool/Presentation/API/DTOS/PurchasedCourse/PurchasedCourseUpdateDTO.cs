@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
 
-        public int IdUser { get; set; }
+        public int? IdUser { get; set; }
 
-        public int IdCourses { get; set; }
-    }
+        public int? IdCourses { get; set; }
+    }               
 }
 

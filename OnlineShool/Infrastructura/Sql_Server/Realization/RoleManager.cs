@@ -25,14 +25,7 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             return newRole;
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var _context = _factory.CreateDbContext();
-            var removeRole = await _context.Roles.FindAsync(id);
-            if (removeRole == null) { return; }
-            _context.Roles.Remove(removeRole);
-            await _context.SaveChangesAsync();
-        }
+
 
         public async Task<IReadOnlyList<Models.Role>> GetAllAsync()
         {
@@ -41,12 +34,11 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             return result;
         }
 
-        public async Task<List<Models.Role>> GetRolesById(int id)
+        public async Task<Models.Role> GetRolesById(int id)
         {
             var _context = _factory.CreateDbContext();
             var result = await _context.Roles
-                .Where(x => x.Id == id)
-                .ToListAsync();
+                .FindAsync(id);               
             return result;
         }
 
@@ -64,5 +56,7 @@ namespace OnlineShool.Infrastructura.Sql_Server.Realization
             await  _context.SaveChangesAsync();
             return updateRole;
         }
+
+
     }
 }

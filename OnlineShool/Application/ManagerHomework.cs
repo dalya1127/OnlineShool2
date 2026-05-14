@@ -207,7 +207,7 @@ namespace OnlineShool.Application
             await _statusHwRepository.DeleteStatusHomeWork(id);
         }
 
-        public async Task<ImplementingHomeWorkDomain> UpdateImplementingHomeworkAsync(int id, int IdUser, int IdHomeWork, int IdStatusHomeWork, string? LinkFile = null, int? Score = null)
+        public async Task<ImplementingHomeWorkDomain> UpdateImplementingHomeworkAsync(int id, int? IdUser = null, int? IdHomeWork = null, int? IdStatusHomeWork = null, string? LinkFile = null, int? Score = null)
         {
             var newImplem = await _implementingHomeWorkRepository.UpdateAsync(id,IdUser, IdHomeWork, IdStatusHomeWork, LinkFile, Score);
             return ConvertImplementingHWToDomain(newImplem);
@@ -230,5 +230,6 @@ namespace OnlineShool.Application
             var getHw = await _homeworkRepository.GetByIdAsync(id);
             return ConvertHomeWorkToDomain(getHw);
         }
+
     }
 }

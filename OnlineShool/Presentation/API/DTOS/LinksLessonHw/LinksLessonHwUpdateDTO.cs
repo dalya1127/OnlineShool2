@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
 
-        public int IdHomework { get; set; }
+        public int? IdHomework { get; set; }
 
-        public int IdLessons { get; set; }
+        public int? IdLessons { get; set; }
     }
 }

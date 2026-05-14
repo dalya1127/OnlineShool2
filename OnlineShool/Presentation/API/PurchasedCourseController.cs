@@ -43,7 +43,7 @@ namespace OnlineShool.Presentation.API
             )
         {
 
-            var updateComment = await _purchasedCourseDomain.UpdatePurchasedCourseAsync(courseDTO.IdUser, courseDTO.IdCourses);
+            var updateComment = await _purchasedCourseDomain.UpdatePurchasedCourseAsync(courseDTO.Id,courseDTO.IdUser, courseDTO.IdCourses);
             return Ok(updateComment);
         }
 

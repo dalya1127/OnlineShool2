@@ -49,11 +49,6 @@ namespace OnlineShool.Presentation.API
         }
 
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromQuery] int id)
-        {
-            await _roleDomain.DeleteRolesAsync(id);
-            return Ok();
-        }
+
     }
 }

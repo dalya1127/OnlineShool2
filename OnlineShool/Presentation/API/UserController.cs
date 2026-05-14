@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShool.Domain;
+using OnlineShool.Infrastructura.Sql_Server.Models;
 using OnlineShool.Presentation.API.DTOS.User;
 namespace OnlineShool.Presentation.API
 {
@@ -8,10 +9,12 @@ namespace OnlineShool.Presentation.API
     public class UserController : Controller
     {
         private readonly IUserDomain _userDomain;
+        private readonly IRoleDomain _roleDomain;
 
-        public UserController(IUserDomain userDomain)
+        public UserController(IUserDomain userDomain, IRoleDomain roleDomain)
         {
-           _userDomain = userDomain;
+            _userDomain = userDomain;
+            _roleDomain = roleDomain;
         }
 
 
@@ -21,9 +24,9 @@ namespace OnlineShool.Presentation.API
             [FromBody] UserAuthorizationDTO userDTO
             )
         {
-            var result = await _userDomain.AuthorizationUserAsync(userDTO.Login,userDTO.Password)   ;
+            var result = await _userDomain.AuthorizationUserAsync(userDTO.Login, userDTO.Password);
             if (result == null) return Unauthorized();
-            return Ok(result);  
+            return Ok(result);
         }
 
 
@@ -35,16 +38,25 @@ namespace OnlineShool.Presentation.API
             [FromBody] UserCreateDTO userDTO
             )
         {
-            var newUser = await _userDomain.CreateUserAsync(
-                userDTO.FirstName,
-                userDTO.LastName,
-                userDTO.IdRole,
-                userDTO.Login,
-                userDTO.Email,
-                userDTO.Password,
-                userDTO.Patronymic);
 
-            return Ok(newUser);
+            try
+            {
+
+                var newUser = await _userDomain.CreateUserAsync(
+                    userDTO.FirstName,
+                    userDTO.LastName,
+                    userDTO.IdRole,
+                    userDTO.Login,
+                    userDTO.Email,
+                    userDTO.Password,
+                    userDTO.Patronymic);
+
+                return Ok(ConvertDomainToResponse(newUser));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPut]
         public async Task<IActionResult> Update
@@ -64,7 +76,7 @@ namespace OnlineShool.Presentation.API
                 );
             return Ok(newUser);
 
-            
+
         }
 
         [HttpGet("GetAll")]
@@ -92,5 +104,19 @@ namespace OnlineShool.Presentation.API
             return Ok();
         }
 
+        private UserResponseDTO ConvertDomainToResponse(UserDomain userDomain)
+        {
+            return new UserResponseDTO()
+            {
+                FirstName = userDomain.FirstName,
+                LastName = userDomain.LastName,
+                Login = userDomain.Login,
+                Email = userDomain.Email,
+                Patronymic = userDomain.Patronymic
+            };
+        }       
+    };
+        
+
     }
-}
+

@@ -6,11 +6,11 @@ namespace OnlineShool.Presentation.API.DTOS.ImplementingHw
     {
         public int Id { get; set; }
 
-        public int IdUser { get; set; }
+        public int? IdUser { get; set; }
 
-        public int IdHomeWork { get; set; }
+        public int? IdHomeWork { get; set; }
 
-        public int IdStatusHomeWork { get; set; }
+        public int? IdStatusHomeWork { get; set; }
 
         public string? LinkFile { get; set; }
 

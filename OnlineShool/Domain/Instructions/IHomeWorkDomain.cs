@@ -49,9 +49,9 @@
             );
         Task<ImplementingHomeWorkDomain> UpdateImplementingHomeworkAsync(
             int id,
-            int IdUser,
-            int IdHomeWork,
-            int IdStatusHomeWork,
+            int?IdUser = null,
+            int? IdHomeWork = null,
+            int? IdStatusHomeWork = null,
             string? LinkFile = null,
             int? Score = null
             );

@@ -51,10 +51,7 @@ namespace OnlineShool.Application
 
 
 
-        public async Task DeleteRolesAsync(int id)
-        {
-            await _roleRepository.DeleteAsync(id);
-        }
+
 
 
         public async Task<RoleDomain> UpdateRolesAsync(int id, string? Name = null, string? Description = null, int? IdRole = null)
@@ -75,10 +72,14 @@ namespace OnlineShool.Application
             return ConvertRoleToList(newRole);
         }
 
-        public async Task<List<RoleDomain>>GetRolesById(int id)
+
+
+        public async Task<RoleDomain> GetRolesById(int id)
         {
             var newRole = await _roleRepository.GetRolesById(id);
-            return ConvertRoleToList(newRole);
+            return ConvertRoleToDomain(newRole);
         }
+
+
     }
 }
